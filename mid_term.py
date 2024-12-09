@@ -2,6 +2,14 @@ class Library:
     book_list=[]
 
     @classmethod
+    def view_all_books(cls):
+        if not cls.book_list:
+            print("No books available.")
+        else:
+            for book in cls.book_list:
+                book.view_book_info()
+
+    @classmethod
     def entry_book(cls,book):
         cls.book_list.append(book)
 
@@ -11,14 +19,6 @@ class Library:
             if book.get_book_id()==book_id:
                 return book
         return None
-    
-    @classmethod
-    def view_all_books(cls):
-        if not cls.book_list:
-            print("No books available.")
-        else:
-            for book in cls.book_list:
-                book.view_book_info()
 
 class Book:
     def __init__(self,book_id,title,author):
@@ -75,12 +75,14 @@ def menu():
             else:
                 print("Error: Book ID not found.")
         elif choice=="4":
-            print("Exiting the Library system. Goodbye!")
+            print("Goodbye")
             break
         else:
-            print("Invalid choice. Please try again.")
+            print("Invalid choice.Please try again.")
 
 Book("001","Abar Jok-er Dhon","Hemendra Kumar Ray")
 Book("002","Megha Mallar","Bibhutibhushan Bandyopadhyay")
 Book("003","Sonkhar Sanket","Sujan DasGupta")
+Book("004","Feluda Shomogro","Satyajit Ray")
+Book("005","Bhomkash Shomogro","Sharadindu Bandyopadhyay")
 menu()
